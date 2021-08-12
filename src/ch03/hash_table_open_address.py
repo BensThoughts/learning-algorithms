@@ -8,6 +8,12 @@ class Hashtable:
       self.table = [None] * M
       self.M = M
       self.N = 0
+
+  def __iter__(self):
+    for entry in self.table:
+      while entry:
+        yield (entry.key, entry.value)
+        entry = entry.next
   
   def get(self, k):
     hc = hash(k) % self.M
